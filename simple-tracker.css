@@ -1,0 +1,118 @@
+.picker__period, .picker__increment {
+    font-size: 1.5rem;
+    font-family: "Roboto", sans-serif;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .picker {
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .picker__input {
+    border: none;
+    font-size: 1.8rem;
+    width: 8.477rem;
+    padding: 1.5rem;
+    text-align: center;
+    background: none;
+    border-bottom: 2px solid #64707c;
+    color: #64707c;
+  }
+  .picker__input:focus {
+    outline: none;
+  }
+  .picker__input:hover, .picker__input:focus {
+    background: white;
+    border-bottom-color: #037DE4;
+  }
+  .picker__icon {
+    display: flex;
+    align-items: center;
+    color: #64707c;
+    padding: 0 0.5rem;
+    border-bottom: 2px solid #64707c;
+  }
+  .picker__increment {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #64707c;
+    color: #64707c;
+  }
+  .picker__increment:hover, .picker__increment:focus {
+    border-bottom-color: #037DE4;
+    outline: none;
+    color: #037DE4;
+  }
+  .picker__slot {
+    display: flex;
+  }
+  .picker__controls {
+    position: relative;
+  }
+  .picker__list {
+    visibility: hidden;
+    position: absolute;
+    min-width: 100%;
+    list-style: none;
+    padding: 0;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    max-height: 300px;
+    overflow: auto;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.05), 0 3px 20px rgba(0, 0, 0, 0.1);
+  }
+  .picker__list.is-open {
+    visibility: visible;
+  }
+  .picker__list:focus {
+    outline: 1px solid #037DE4;
+  }
+  .picker__list li {
+    font-size: 1.8rem;
+    padding: 2rem;
+    cursor: pointer;
+  }
+  .picker__list li.is-highlighted {
+    background: #037DE4;
+    color: #fff;
+  }
+  .picker__list li:hover, .picker__list li:focus {
+    outline: none;
+    background: #037DE4;
+    color: #fff;
+  }
+  .picker__presets {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1.5rem -0.5rem 0;
+    justify-content: center;
+  }
+  .picker__period {
+    padding: 0.75rem 1.25rem;
+    line-height: 1;
+    white-space: nobreak;
+    border-radius: 10em;
+    border: 2px solid #64707c;
+    color: #64707c;
+    font-weight: 400;
+    margin: 0.5rem;
+  }
+  .picker__period:hover, .picker__period:focus {
+    outline: none;
+    border-color: #037DE4;
+    color: #037DE4;
+  }
+  .picker__period.is-pressed {
+    background-color: #037DE4;
+    border-color: #037DE4;
+    color: #fff;
+  }
+  .picker__period.is-pressed:hover, .picker__period.is-pressed:focus {
+    border-color: #02467f;
+  }
