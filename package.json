@@ -1,0 +1,19 @@
+{
+  "name": "the-simple-timepicker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "simple-timepicker.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hashemirafsan/simple-timepicker.git"
+  },
+  "author": "Hashemi Rafsan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hashemirafsan/simple-timepicker/issues"
+  },
+  "homepage": "https://github.com/hashemirafsan/simple-timepicker#readme"
+}
