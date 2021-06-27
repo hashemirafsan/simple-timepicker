@@ -32,8 +32,4 @@
   </script>
 
 ```
-
-## Improvement
-- Should be implement multiple timepicker in same page
-
 ### credit goes to [https://codepen.io/larsmagnus/pen/xYrKLj](https://codepen.io/larsmagnus/pen/xYrKLj)
