@@ -4,8 +4,8 @@
 ## Installation
 
 - Need jQuery 
-- add script [https://unpkg.com/the-simple-timepicker@1.0.0/simple-timepicker.min.js](https://unpkg.com/the-simple-timepicker@1.0.0/simple-timepicker.min.js)
-- add css [https://unpkg.com/the-simple-timepicker@1.0.0/simple-timepicker.min.css](https://unpkg.com/the-simple-timepicker@1.0.0/simple-timepicker.min.css)
+- add script [https://unpkg.com/the-simple-timepicker@1.0.0/simple-timepicker.min.js](https://unpkg.com/the-simple-timepicker@2.0.0/simple-timepicker.min.js)
+- add css [https://unpkg.com/the-simple-timepicker@1.0.0/simple-timepicker.min.css](https://unpkg.com/the-simple-timepicker@2.0.0/simple-timepicker.min.css)
 
 ## Implementation
 
@@ -17,10 +17,17 @@
   <script>
     $('#timer_picker').timePicker({
         mode: 24, // you can use 12 
-        secondGap: 5,
+        minuteGap: 5,
         enableHour: true,
         enableSecond: true,
-        inputName: 'time' // you can use your own input field name
+        inputName: 'time', // you can use your own input field name
+        default: '00:05',
+        selectedValue: function(value) {
+           .... 
+        },
+        change: function(el) {
+           .... 
+        }
     })
   </script>
 

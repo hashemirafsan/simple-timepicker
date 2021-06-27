@@ -6,7 +6,14 @@
             secondGap: 5,
             enableHour: true,
             enableSecond: true,
-            inputName: 'time'
+            inputName: 'time',
+            default: '00:00',
+            value: this.default,
+            change: function(el){},
+            selectedValue: function(value){},
+            _setValue: function(value) {
+                this.value = value;
+            }
         }, options);
 
         let keys = {
@@ -15,24 +22,32 @@
             ENTER: 13,
         };
 
-        $(this).append(`
-      <div class='picker'>
-          <div class="picker__slot">
-            <div class="picker__controls">
-              <input type="text" name="${config.inputName}" class="picker__input" value="08:00" alt="Type time in hours and minutes" maxlength="5" role="combobox" aria-haspopup="listbox" aria-owns="pickerlist" aria-autocomplete="none" aria-expanded="false">
-              <ol class="picker__list" id="pickerlist" tabindex="0" role="listbox" aria-labelledby="pickerheader" aria-activedescendant=""></ol>
-            </div>
-          </div>
-      </div>
-      `);
+        function randstr(prefix) {
+            return Math.random().toString(36).replace('0.',prefix || '');
+        }
 
-        let pickerListElement = $('.picker__list', this);
+        let pickerId = randstr('picker');
+        let pickerSlotId = randstr('picker__slot');
+        let pickerListId = randstr('pickerlist');
+        let pickerInputId = randstr('picker__input');
+
+        $(this).append(`
+            <div class='picker' id="${pickerId}">
+                <div class="picker__slot" id="${pickerSlotId}">
+                    <div class="picker__controls">
+                    <input type="text" name="${config.inputName}" id="${pickerInputId}" class="picker__input" value="${config.default || config.value}" alt="Type time in hours and minutes" maxlength="5" role="combobox" aria-haspopup="listbox" aria-owns="pickerlist" aria-autocomplete="none" aria-expanded="false">
+                    <ol class="picker__list" id="${pickerListId}" tabindex="0" role="listbox" aria-labelledby="pickerheader" aria-activedescendant=""></ol>
+                    </div>
+                </div>
+            </div>
+        `);
+
+        let pickerListElement = $(`#${pickerListId}`, this);
 
         pickerListElement.append(
-          generateListForTime(config.mode, config.secondGap)
+           generateListForTime(config.mode, config.secondGap)
         );
-
-
+        
         function generateListForTime(mode = 24, gap = 1) {
             if (config.enableHour && config.enableSecond) {
                 return generateHourAndSecondList(mode, gap)
@@ -43,7 +58,7 @@
             }
           
             if (config.enableSecond) {
-               return generateOnlyHourList(gap)
+               return generateOnlySecondList(gap)
             }
         }
 
@@ -122,17 +137,16 @@
         }
 
         function getLiTemplate(value) {
-            return `<li tabindex="-1" role="option" aria-selected="false" class="picker__item" id="pi1">${value}</li>`
+            let liId = randstr('pi_');
+            return `<li tabindex="-1" role="option" aria-selected="false" class="picker__item" data-value="${value}" id="${liId}">${value}</li>`
         }
 
-        const picker = document.querySelector('.picker');
-        const input = document.querySelector('.picker__input');
-        let list = document.querySelector('.picker__list');
+        const picker = document.getElementById(pickerId);
+        const input = document.getElementById(pickerInputId);
+        let list = document.getElementById(pickerListId);
 
-        let items = document.querySelectorAll('.picker__list li');
+        let items = document.querySelectorAll(`#${pickerListId} li`);
         items = [...items];
-
-
 
         /**
          * Open the time dropdown
@@ -239,6 +253,7 @@
         input.addEventListener('keydown', (e) => {
             handleKeyNavigation(e);
         });
+
         list.addEventListener('keydown', (e) => {
             handleKeyNavigation(e);
         });
@@ -266,8 +281,10 @@
          */
         const suggestDropDownTime = (time) => {
             let item = findDropDownTime(time);
-            item.classList.add('is-highlighted');
-            item.scrollIntoView();
+            if (item) {
+                item.classList.add('is-highlighted');   
+                item.scrollIntoView();
+            }
         }
 
         /**
@@ -287,7 +304,12 @@
          * List / List items event listeners
          */
         list.addEventListener('click', (e) => {
-            console.log('list click', e.target);
+            let target = $(e.target);
+            
+            config.change(target);
+            config.selectedValue(target.attr('data-value'));
+            config._setValue(target.attr('data-value'));
+            $(pickerInputId).val(target.attr('data-value'));
 
             if (e.target.matches('li')) {
                 selectDropDownTime(e.target);

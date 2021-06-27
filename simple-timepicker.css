@@ -68,6 +68,7 @@
   }
   .picker__list.is-open {
     visibility: visible;
+    z-index: 9999;
   }
   .picker__list:focus {
     outline: 1px solid #037DE4;
