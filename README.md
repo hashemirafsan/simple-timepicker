@@ -4,8 +4,8 @@
 ## Installation
 
 - Need jQuery 
-- add script [https://unpkg.com/the-simple-timepicker@1.0.0/simple-timepicker.min.js](https://unpkg.com/the-simple-timepicker@2.0.0/simple-timepicker.min.js)
-- add css [https://unpkg.com/the-simple-timepicker@1.0.0/simple-timepicker.min.css](https://unpkg.com/the-simple-timepicker@2.0.0/simple-timepicker.min.css)
+- add script [https://unpkg.com/the-simple-timepicker@2.0.0/simple-timepicker.min.js](https://unpkg.com/the-simple-timepicker@2.0.0/simple-timepicker.min.js)
+- add css [https://unpkg.com/the-simple-timepicker@2.0.0/simple-timepicker.min.css](https://unpkg.com/the-simple-timepicker@2.0.0/simple-timepicker.min.css)
 
 ## Implementation
 
